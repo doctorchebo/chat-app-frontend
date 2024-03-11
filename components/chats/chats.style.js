@@ -2,14 +2,16 @@ import { StyleSheet } from "react-native";
 import { SIZES, COLORS } from "../../constants/theme.ts";
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: "center",
-    alignItems: "center",
+  container: {},
+  pageContainer: {
     height: "100%",
   },
-  text : {
+  listContainer: {
+    margin: "auto",
+  },
+  text: {
     color: COLORS.text,
-    padding: SIZES.xsmall
+    padding: SIZES.xsmall,
   },
   chatBtn: {
     width: 100,
@@ -27,38 +29,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "absolute",
     bottom: SIZES.large,
-    right: SIZES.large
+    right: SIZES.large,
   },
-  rowFront: {
-    alignItems: 'center',
-    backgroundColor: 'white',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    justifyContent: 'center',
-    height: 50,
-  },
-  rowBack: {
-    alignItems: 'center',
-    backgroundColor: 'red',
+  deleteContainer: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingLeft: 15,
-  },
-  backRightBtn: {
-    alignItems: 'center',
-    bottom: 0,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 0,
-    width: 75,
-  },
-  backRightBtnRight: {
-    backgroundColor: 'red',
-    right: 0,
-  },
-  backTextWhite: {
-    color: '#FFF',
+    flexDirection: "row",
+    alignSelf: "flex-end",
+    alignContent: "center",
+    alignItems: "center",
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: COLORS.error,
+    height: "50%",
+    width: "auto",
+    padding: 10,
+    marginLeft: SIZES.xsmall,
+    marginRight: SIZES.xsmall,
   },
 });
 

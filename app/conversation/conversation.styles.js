@@ -3,7 +3,7 @@ import { COLORS, SIZES } from "../../constants/theme.ts";
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: SIZES.xxlarge,
+    height: "100%",
   },
   messageContainer: {
     backgroundColor: COLORS.background,
@@ -17,7 +17,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marrginTop: SIZES.xxlarge,
     alignItems: "center",
-    gapRow: SIZES.large
+    gapRow: SIZES.large,
+    position: "absolute",
+    bottom: 0,
+    backgroundColor: COLORS.black,
+    zIndex: 1,
   },
   textInput: {
     marginLeft: "auto",
@@ -30,7 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: SIZES.medium,
-    color: COLORS.white
+    color: COLORS.white,
   },
 });
 

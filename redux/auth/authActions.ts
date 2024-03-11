@@ -38,7 +38,6 @@ export const getCurrentUserData = () => async (dispatch: AppDispatch) => {
       `http://192.168.1.7:8080/api/user/getCurrentUser`
     );
     dispatch(userData(response.data));
-    console.log(response.data);
   } catch (error) {
     console.error("Error fetching current user data:", error);
   }

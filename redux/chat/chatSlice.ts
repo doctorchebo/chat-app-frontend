@@ -1,22 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface Chat {
-  id: number;
-  name: string;
-  type: "GROUP" | "PRIVATE" | "CHANNEL";
-  participantsIds: number[];
-}
-
+import { Chat } from "../../types/ChatTypes";
 interface ChatState {
   chats: Chat[];
   loading: boolean;
-  error : string | null;
+  error: string | null;
+  currentChatDetails: Chat | null;
 }
 
 const initialState: ChatState = {
   chats: [],
   loading: false,
-  error: null
+  error: null,
+  currentChatDetails: null,
 };
 
 const chatSlice = createSlice({
@@ -29,11 +24,20 @@ const chatSlice = createSlice({
     loading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
     },
-    setError(state, action: PayloadAction<string>){
+    setError(state, action: PayloadAction<string>) {
       state.error = action.payload;
-    }
+    },
+    removeChat(state, action: PayloadAction<Chat>) {
+      state.chats = state.chats
+        .filter((chat) => chat.id !== action.payload.id)
+        .map((chat) => chat);
+    },
+    setChatDetails(state, action: PayloadAction<Chat>) {
+      state.currentChatDetails = action.payload;
+    },
   },
 });
 
-export const { setChats, loading, setError } = chatSlice.actions;
+export const { setChats, removeChat, loading, setError, setChatDetails } =
+  chatSlice.actions;
 export default chatSlice.reducer;

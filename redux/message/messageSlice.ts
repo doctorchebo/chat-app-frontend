@@ -13,12 +13,14 @@ interface MessageState {
   messages: Message[];
   loading: boolean;
   error: string | null;
+  lastMessagesForChats: Message[];
 }
 
 const initialState: MessageState = {
   messages: [],
   loading: false,
   error: null,
+  lastMessagesForChats: [],
 };
 
 const messageSlice = createSlice({
@@ -37,10 +39,18 @@ const messageSlice = createSlice({
     setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
     },
+    setLastMessages: (state, action: PayloadAction<Message[]>) => {
+      state.lastMessagesForChats = action.payload;
+    },
   },
 });
 
-export const { setMessages, addMessage, setLoading, setError } =
-  messageSlice.actions;
+export const {
+  setMessages,
+  addMessage,
+  setLoading,
+  setError,
+  setLastMessages,
+} = messageSlice.actions;
 
 export default messageSlice.reducer;

@@ -1,12 +1,17 @@
 import { StyleSheet } from "react-native";
 import { SIZES, COLORS } from "../../constants/theme.ts";
 const styles = StyleSheet.create({
+  pageContainer: {
+    backgroundColor: COLORS.black,
+    height: "100%",
+  },
   container: {
-    marginTop: SIZES.xxlarge,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    alignContent: "center",
   },
-  textInput:{
+  textInput: {
     width: "60%",
     fontSize: SIZES.large,
     borderRadius: SIZES.small,
@@ -19,7 +24,7 @@ const styles = StyleSheet.create({
     color: COLORS.black,
     margin: 5,
   },
-  loginBtn:{
+  loginBtn: {
     marginTop: SIZES.medium,
     width: 100,
     height: 50,
@@ -29,16 +34,17 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary,
     borderRadius: SIZES.small,
   },
-  loginText : {
+  loginText: {
     color: COLORS.text,
   },
-  textPlaceholder:{
-    color: COLORS.text
+  textPlaceholder: {
+    color: COLORS.text,
   },
   title: {
-    color: COLORS.primary,
+    color: COLORS.white,
     fontSize: SIZES.xxlarge,
-  }
+    margin: SIZES.large,
+  },
 });
 
 export default styles;

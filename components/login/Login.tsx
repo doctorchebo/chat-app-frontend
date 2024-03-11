@@ -38,7 +38,7 @@ const Login = () => {
   ) : error ? (
     <Text>Error while login user</Text>
   ) : (
-    <SafeAreaView>
+    <SafeAreaView style={styles.pageContainer}>
       <View style={styles.container}>
         <Text style={styles.title}>SECRET CHAT APP</Text>
         <TextInput

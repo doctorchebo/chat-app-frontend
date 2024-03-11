@@ -1,5 +1,11 @@
 import api from "@/api/api";
-import { addMessage, setError, setLoading, setMessages } from "./messageSlice";
+import {
+  addMessage,
+  setError,
+  setLoading,
+  setMessages,
+  setLastMessages,
+} from "./messageSlice";
 import { AppDispatch } from "../types";
 import { MessageType } from "../../types/MessageTypes";
 
@@ -25,11 +31,12 @@ export const fetchConversation =
   };
 
 export const sendMessage =
-  ({ recipientIds, messageType, content }: MessageType) =>
+  ({ chatId, recipientIds, messageType, content }: MessageType) =>
   async (dispatch: AppDispatch) => {
     dispatch(setLoading(true));
     try {
       const data = {
+        chatId: chatId,
         recipientIds: recipientIds,
         messageType: messageType,
         content: content,
@@ -48,3 +55,22 @@ export const sendMessage =
       dispatch(setLoading(false));
     }
   };
+export const getLastMessagesForChats = () => async (dispatch: AppDispatch) => {
+  dispatch(setLoading(true));
+  try {
+    const response = await api.get("/message/getLastMessagesForChats");
+    if (response.status === 200) {
+      dispatch(setLastMessages(response.data));
+    }
+  } catch (error) {
+    dispatch(
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Error when fetching last message for chats"
+      )
+    );
+  } finally {
+    dispatch(setLoading(false));
+  }
+};

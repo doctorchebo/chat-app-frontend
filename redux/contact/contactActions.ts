@@ -4,11 +4,12 @@ import { setContacts, setLoading, setError } from "./contactSlice";
 
 export const fetchContacts = (id: number) => async (dispatch: AppDispatch) => {
   dispatch(setLoading(true));
-  console.log("fetching id: " + id);
   try {
     const response = await api.get(`/contact/getAllContacts/${id}`);
-    dispatch(setContacts(response.data));
-    dispatch(setLoading(false));
+    if (response.status === 200) {
+      dispatch(setContacts(response.data));
+      dispatch(setLoading(false));
+    }
   } catch (error) {
     dispatch(
       setError(

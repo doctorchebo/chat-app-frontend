@@ -19,13 +19,12 @@ interface MessageProps {
 const Message: React.FC<MessageProps> = ({ message }) => {
   const createdDate = formatTimestamp(message.created);
   const { id } = useSelector((state: RootState) => state.auth);
-  const isCurrentUserIncluded = id != null && message.recipientIds.includes(id);
-
+  const isSentByCurrentUser = id != null && !message.recipientIds.includes(id);
   return (
     <View
       style={[
         styles.container,
-        isCurrentUserIncluded ? styles.left : styles.right,
+        isSentByCurrentUser ? styles.right : styles.left,
       ]}
     >
       <Text style={styles.messageContent}>{message.content}</Text>
