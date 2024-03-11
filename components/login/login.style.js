@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.primary,
     borderWidth: 1,
     padding: 10,
-    color: COLORS.black,
+    color: COLORS.white,
     margin: 5,
   },
   loginBtn: {
